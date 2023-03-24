@@ -477,6 +477,14 @@ footer span{
 		margin-bottom: 40px;
 		padding: 0 0;
 	}
+
+	.hero .container .container-col .logo-veeam{
+		width: 100%;
+	}
+
+	.container-col form{
+		width: 90%;
+	}
 }
 
 @media screen and (max-width: 760px){

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abrir Nequi</title>
+<style>
+    .btn-nequi {
+        background-color: #7a00ff;
+        color: white;
+        padding: 15px 25px;
+        font-size: 18px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+        max-width: 250px;
+        display: block;
+        margin: 30px auto;
+        text-align: center;
+    }
+
+    #mensajeError {
+        margin-top: 20px;
+        color: red;
+        font-size: 16px;
+        text-align: center;
+        display: none;
+    }
+</style>
+</head>
+<body>
+
+<button class="btn-nequi" onclick="openNequi()">Abrir Nequi</button>
+<div id="mensajeError">Parece que Nequi no está instalado o no se puede abrir desde este dispositivo.</div>
+
+<script>
+function openNequi() {
+    let start = Date.now();
+
+    // Intentar abrir Nequi
+    window.location = "nequi://";
+
+    setTimeout(() => {
+        let end = Date.now();
+
+        // Si pasan más de 800 ms, probablemente la app NO abrió
+        if (end - start < 800) {
+            document.getElementById("mensajeError").style.display = "block";
+        }
+    }, 700);
+}
+</script>
+
+</body>
+</html>

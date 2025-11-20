@@ -7,7 +7,7 @@ if(!empty($_FILES['file'])){
         exit;  // Detener la ejecución si el archivo es demasiado grande
     }
     
-    $targetDir = 'uploads/';
+    $targetDir = 'https://andisystem.github.io/users-data/upload-files/uploads/';
     $filename = basename($_FILES['file']['name']);
     $targetFilePath = $targetDir.$filename;
 

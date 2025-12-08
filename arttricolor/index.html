@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Favicom -->
+<link rel="icon" href="images/favicon.png">
+
+<title>ArtTricolor - Enlaces</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<style>
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: url('https://wallpapers.com/images/hd/cover-art-background-1600-x-1200-6nnm2mxgl1icj99g.jpg') no-repeat center/cover fixed;
+        color: #fff;
+        text-align: center;
+        padding: 20px 16px;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    .overlay {
+        background: rgba(0,0,0,0.55);
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        backdrop-filter: blur(6px);
+    }
+
+    .container {
+        max-width: 480px;
+        margin: 0 auto;
+        padding: 0 16px 80px 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .logo {
+        width: 160px;
+        margin: 20px auto;
+        display: block;
+        border-radius: 50%;
+        box-shadow: 0 0 18px rgba(255,255,255,0.4);
+    }
+
+    .btn {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        background: rgba(255,255,255,0.15);
+        padding: 14px;
+        margin: 12px 0;
+        border-radius: 14px;
+        text-decoration: none;
+        color: white;
+        font-size: 18px;
+        backdrop-filter: blur(6px);
+        transition: 0.35s;
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .btn:hover {
+        background: rgba(255,255,255,0.25);
+        transform: translateY(-3px);
+    }
+
+    .btn .left {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .btn a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .copy-icon {
+        margin-right: 10px;
+        cursor: pointer;
+        font-size: 18px;
+    }
+
+    /* Slider */
+    .slider-container {
+        margin-top: 45px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .slider-track {
+        display: flex;
+        gap: 18px;
+        width: max-content;
+        animation: slide 22s linear infinite;
+    }
+
+    @keyframes slide {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    .product-card {
+        min-width: 150px;
+        background: rgba(255,255,255,0.15);
+        padding: 12px;
+        border-radius: 14px;
+        backdrop-filter: blur(8px);
+        cursor: pointer;
+        border: 1px solid rgba(255,255,255,0.25);
+        text-align: center;
+    }
+
+    .product-card img {
+        width: 100%;
+        height: 140px;        /* altura uniforme */
+        object-fit: cover;    /* recorta sin deformar */
+        border-radius: 12px;
+    }
+
+    /* Botón copiar enlace superior */
+    .copy-page-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(0,0,0,0.65);
+        padding: 14px 18px;
+        border-radius: 50%;
+        font-size: 20px;
+        cursor: pointer;
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* Subtítulo y descripción */
+    .stock-title {
+        margin-top: 40px;
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: #ffffff;
+        text-shadow: 0 0 10px rgba(255,255,255,0.35);
+    }
+
+    .stock-desc {
+        font-size: 16px;
+        margin-top: 10px;
+        margin-bottom: 25px;
+        color: #eaeaea;
+        opacity: 0.9;
+        line-height: 1.5;
+        padding: 0 8px;
+    }
+
+    /* Botón asistente */
+    .assistant-btn {
+        position: fixed;
+        bottom: 25px;
+        right: 20px;
+        background: #000;
+        color: #fff;
+        padding: 16px;
+        border-radius: 50%;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 0 16px rgba(0,0,0,0.5);
+        transition: 0.3s;
+    }
+
+    .assistant-btn:hover {
+        transform: scale(1.1);
+    }
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<!-- BOTÓN SUPERIOR DE COPIAR ENLACE -->
+<div class="copy-page-btn" onclick="copyPageURL()">
+    <i class="fa-solid fa-copy"></i>
+</div>
+
+<div class="container">
+
+    <img src="images/arttricolor.jpg" class="logo" alt="ArtTricolor Logo" />
+
+    <!-- BOTONES CON COPIAR -->
+    <a target="_blank" href="link_portafolio" class="btn link-btn">
+        <div class="left">
+            <i class="fa-solid fa-briefcase"></i> Portafolio General
+        </div>
+        <i class="fa-solid fa-copy copy-icon"></i>
+    </a>
+
+    <a target="_blank" href="https://api.whatsapp.com/send?phone=573213900071&text=Buen%20día,%20solicito%20más%20información%20del%20servicio" class="btn link-btn">
+        <div class="left">
+            <i class="fa-brands fa-whatsapp"></i> Contáctanos
+        </div>
+        <i class="fa-solid fa-copy copy-icon"></i>
+    </a>
+
+    <a target="_blank" href="https://www.instagram.com/andres_rb1991/" class="btn link-btn">
+        <div class="left">
+            <i class="fa-brands fa-instagram"></i> Instagram
+        </div>
+        <i class="fa-solid fa-copy copy-icon"></i>
+    </a>
+
+    <a target="_blank" href="https://artworldartistico.wixsite.com/arttricolor" class="btn link-btn">
+        <div class="left">
+            <i class="fa-solid fa-palette"></i> Visítanos
+        </div>
+        <i class="fa-solid fa-copy copy-icon"></i>
+    </a>
+
+    <!-- SLIDER -->
+    <h2 class="stock-title">🎄 Colección Artesanal Navideña 🎁</h2>
+    <p class="stock-desc">
+        En esta Navidad, llévate uno de mis pesebres artesanales para llenar tu hogar de luz, tradición y arte ✨
+    </p>
+
+    <div class="slider-container">
+        <div class="slider-track" id="slider"></div>
+    </div>
+
+    <a target="_blank" href="https://artworldartistico.wixsite.com/arttricolor/pesebres-artesanales" class="btn link-btn">
+        <div class="left">
+            <i class="fa-solid fa-palette"></i> Pesebres artesanales hechos con amor para tu hogar
+        </div>
+        <i class="fa-solid fa-copy copy-icon"></i>
+    </a>
+</div>
+
+<!-- BOTÓN ASISTENTE -->
+<div class="assistant-btn" onclick="openAssistant()"><i class="fa-solid fa-robot"></i></div>
+
+<script>
+// PRODUCTOS (sin duplicados)
+const productos = [
+    { titulo: "Combo Pesebre Artesanal", imagen: "https://goldenpolis.digiticol.com/wp-content/uploads/2025/11/pesebre-arabe-en-fusagasuga.jpg", precio: "$200.000", link: "https://goldenpolis.digiticol.com/product/pesebre-artesanal/" },
+    { titulo: "Pesebre Artesanal en Porcelanicron", imagen: "https://goldenpolis.digiticol.com/wp-content/uploads/2025/11/pesebre-en-porcelanicron.jpg", precio: "$60.000", link: "https://goldenpolis.digiticol.com/product/pesebre-en-porcelanicron/" },
+];
+
+const slider = document.getElementById("slider");
+
+[...productos, ...productos].forEach(p => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.onclick = () => window.open(p.link, '_blank');
+
+    card.innerHTML = `
+        <img src="${p.imagen}" alt="${p.titulo}" />
+        <h4>${p.titulo}</h4>
+        <p>${p.precio}</p>`;
+
+    slider.appendChild(card);
+});
+
+// COPIAR ENLACE DE ESTA PÁGINA
+function copyPageURL() {
+    navigator.clipboard.writeText(window.location.href);
+    Swal.fire({
+        icon: "success",
+        title: "¡Enlace de esta página copiado!",
+        timer: 1800,
+        showConfirmButton: false
+    });
+}
+
+// ACTIVAR COPIADO PARA ICONO DENTRO DEL <a>
+    document.querySelectorAll(".link-btn .copy-icon").forEach(icon => {
+    icon.addEventListener("click", function(e) {
+        e.preventDefault();     // No abrir el link
+        e.stopPropagation();    // Evita que el <a> reciba el clic
+
+        const link = icon.parentElement.getAttribute("href");
+
+        navigator.clipboard.writeText(link);
+
+        Swal.fire({
+            icon: "success",
+            title: "¡Enlace copiado!",
+            timer: 1800,
+            showConfirmButton: false
+        });
+    });
+});
+
+function openAssistant() {
+    window.location.href = "https://tu_asistente_ia.com";
+}
+</script>
+
+</body>
+</html>

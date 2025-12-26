@@ -248,25 +248,25 @@
 
 <script>
 // PRODUCTOS (sin duplicados)
-const productos = [
-    { titulo: "Combo Pesebre Artesanal", imagen: "https://goldenpolis.digiticol.com/wp-content/uploads/2025/11/pesebre-arabe-en-fusagasuga.jpg", precio: "$200.000", link: "https://goldenpolis.digiticol.com/product/pesebre-artesanal/" },
-    { titulo: "Pesebre Artesanal en Porcelanicron", imagen: "https://goldenpolis.digiticol.com/wp-content/uploads/2025/11/pesebre-en-porcelanicron.jpg", precio: "$60.000", link: "https://goldenpolis.digiticol.com/product/pesebre-en-porcelanicron/" },
-];
+//const productos = [
+//    { titulo: "Combo Pesebre Artesanal", imagen: "https://goldenpolis.digiticol.com/wp-content/uploads/2025/11/pesebre-arabe-en-fusagasuga.jpg", precio: "$200.000", link: "https://goldenpolis.digiticol.com/product/pesebre-artesanal/" },
+//    { titulo: "Pesebre Artesanal en Porcelanicron", imagen: "https://goldenpolis.digiticol.com/wp-content/uploads/2025/11/pesebre-en-porcelanicron.jpg", precio: "$60.000", link: "https://goldenpolis.digiticol.com/product/pesebre-en-porcelanicron/" },
+//];
 
-const slider = document.getElementById("slider");
+//const slider = document.getElementById("slider");
 
-[...productos, ...productos].forEach(p => {
-    const card = document.createElement("div");
-    card.className = "product-card";
-    card.onclick = () => window.open(p.link, '_blank');
+//[...productos, ...productos].forEach(p => {
+//    const card = document.createElement("div");
+//    card.className = "product-card";
+//    card.onclick = () => window.open(p.link, '_blank');
 
-    card.innerHTML = `
-        <img src="${p.imagen}" alt="${p.titulo}" />
-        <h4>${p.titulo}</h4>
-        <p>${p.precio}</p>`;
+//    card.innerHTML = `
+//        <img src="${p.imagen}" alt="${p.titulo}" />
+//        <h4>${p.titulo}</h4>
+//        <p>${p.precio}</p>`;
 
-    slider.appendChild(card);
-});
+//    slider.appendChild(card);
+//});
 
 // COPIAR ENLACE DE ESTA PÁGINA
 function copyPageURL() {

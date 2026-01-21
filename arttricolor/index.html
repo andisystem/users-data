@@ -15,6 +15,18 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <style>
+    /* FIX SCROLL HORIZONTAL EN MÓVILES */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html, body {
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+
     body {
         margin: 0;
         font-family: "Segoe UI", Arial, sans-serif;
@@ -93,6 +105,7 @@
 
     /* Slider */
     .slider-container {
+        width: 100%;
         margin-top: 45px;
         overflow: hidden;
         position: relative;
@@ -101,6 +114,7 @@
     .slider-track {
         display: flex;
         gap: 18px;
+        max-width: 900px;
         width: max-content;
         animation: slide 22s linear infinite;
     }
@@ -140,6 +154,7 @@
         cursor: pointer;
         backdrop-filter: blur(4px);
         border: 1px solid rgba(255,255,255,0.2);
+        z-index: 10;
     }
 
     /* Subtítulo y descripción */
@@ -226,16 +241,16 @@
     </a>
 
     <!-- SLIDER -->
-    <!--<h2 class="stock-title">🎄 Colección Artesanal Navideña 🎁</h2>
+    <h2 class="stock-title">🎒 Temporada Escolar 2026 📚</h2>
     <p class="stock-desc">
-        En esta Navidad, llévate uno de mis pesebres artesanales para llenar tu hogar de luz, tradición y arte ✨
+        Diseños profesionales de cuadernos escolares listos para descargar, imprimir y crear tu propia línea para la temporada escolar 2026 ✨
     </p>
 
     <div class="slider-container">
         <div class="slider-track" id="slider"></div>
     </div>
 
-    <a target="_blank" href="https://artworldartistico.wixsite.com/arttricolor/pesebres-artesanales" class="btn link-btn">
+    <!--<a target="_blank" href="https://artworldartistico.wixsite.com/arttricolor/pesebres-artesanales" class="btn link-btn">
         <div class="left">
             <i class="fa-solid fa-palette"></i> Pesebres artesanales hechos con amor para tu hogar
         </div>
@@ -244,29 +259,29 @@
 </div>
 
 <!-- BOTÓN ASISTENTE -->
-<!--<div class="assistant-btn" onclick="openAssistant()"><i class="fa-solid fa-robot"></i></div>-->
+<!-- <div class="assistant-btn" onclick="openAssistant()"><i class="fa-solid fa-robot"></i></div> -->
 
 <script>
 // PRODUCTOS (sin duplicados)
-//const productos = [
-//    { titulo: "Combo Pesebre Artesanal", imagen: "https://goldenpolis.digiticol.com/wp-content/uploads/2025/11/pesebre-arabe-en-fusagasuga.jpg", precio: "$200.000", link: "https://goldenpolis.digiticol.com/product/pesebre-artesanal/" },
-//    { titulo: "Pesebre Artesanal en Porcelanicron", imagen: "https://goldenpolis.digiticol.com/wp-content/uploads/2025/11/pesebre-en-porcelanicron.jpg", precio: "$60.000", link: "https://goldenpolis.digiticol.com/product/pesebre-en-porcelanicron/" },
-//];
+const productos = [
+    { titulo: "Diseño de cuaderno escolar Naturaleza Abstracta", imagen: "https://artworldartistico.github.io/tienda-arttricolor/img/cuaderno-naturaleza-abstracta/portada-cuaderno-naturaleza-abstracta.png", precio: "$75.000", link: "https://artworldartistico.github.io/tienda-arttricolor/producto.html?id=diseno-cuaderno-escolar-naturaleza-abstracta" },
+    { titulo: "Diseño de cuaderno escolar Anime Medieval", imagen: "https://artworldartistico.github.io/tienda-arttricolor/img/cuaderno-fantasia-medieval/portada-cuaderno-fantasia-anime-medieval.png", precio: "$100.000", link: "https://artworldartistico.github.io/tienda-arttricolor/producto.html?id=diseno-cuaderno-escolar-anime-medieval" },
+];
 
-//const slider = document.getElementById("slider");
+const slider = document.getElementById("slider");
 
-//[...productos, ...productos].forEach(p => {
-//    const card = document.createElement("div");
-//    card.className = "product-card";
-//    card.onclick = () => window.open(p.link, '_blank');
+[...productos, ...productos].forEach(p => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.onclick = () => window.open(p.link, '_blank');
 
-//    card.innerHTML = `
-//        <img src="${p.imagen}" alt="${p.titulo}" />
-//        <h4>${p.titulo}</h4>
-//        <p>${p.precio}</p>`;
+    card.innerHTML = `
+        <img src="${p.imagen}" alt="${p.titulo}" />
+        <h4>${p.titulo}</h4>
+        <p>${p.precio}</p>`;
 
-//    slider.appendChild(card);
-//});
+    slider.appendChild(card);
+});
 
 // COPIAR ENLACE DE ESTA PÁGINA
 function copyPageURL() {

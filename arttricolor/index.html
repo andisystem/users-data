@@ -195,6 +195,34 @@
     .assistant-btn:hover {
         transform: scale(1.1);
     }
+
+    /* Precio rebajado */
+    .price-box {
+        margin-top: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        font-size: 16px;
+    }
+
+    .price-old {
+        text-decoration: line-through;
+        color: #ffb3b3;
+        font-size: 14px;
+        opacity: 0.8;
+    }
+
+    .price-new {
+        color: #00ffcc;
+        font-weight: 700;
+        font-size: 18px;
+    }
+
+    .price-normal {
+        font-weight: 600;
+        font-size: 16px;
+    }
 </style>
 </head>
 
@@ -259,13 +287,25 @@
 </div>
 
 <!-- BOTÓN ASISTENTE -->
-<!-- <div class="assistant-btn" onclick="openAssistant()"><i class="fa-solid fa-robot"></i></div> -->
+<div class="assistant-btn" onclick="openAssistant()"><i class="fa-solid fa-robot"></i></div>
 
 <script>
 // PRODUCTOS (sin duplicados)
 const productos = [
-    { titulo: "Diseño de cuaderno escolar Naturaleza Abstracta", imagen: "https://artworldartistico.github.io/tienda-arttricolor/img/cuaderno-naturaleza-abstracta/portada-cuaderno-naturaleza-abstracta.png", precio: "$75.000", link: "https://artworldartistico.github.io/tienda-arttricolor/producto.html?id=diseno-cuaderno-escolar-naturaleza-abstracta" },
-    { titulo: "Diseño de cuaderno escolar Anime Medieval", imagen: "https://artworldartistico.github.io/tienda-arttricolor/img/cuaderno-fantasia-medieval/portada-cuaderno-fantasia-anime-medieval.png", precio: "$100.000", link: "https://artworldartistico.github.io/tienda-arttricolor/producto.html?id=diseno-cuaderno-escolar-anime-medieval" },
+    {
+        titulo: "Cuaderno escolar Naturaleza Abstracta",
+        imagen: "https://artworldartistico.github.io/tienda-arttricolor/img/cuaderno-naturaleza-abstracta/portada-cuaderno-naturaleza-abstracta.png",
+        precio: "$75.000",
+        precioNew: "$30.000", // ← si hay promo
+        link: "https://artworldartistico.github.io/tienda-arttricolor/producto.html?id=diseno-cuaderno-escolar-naturaleza-abstracta"
+    },
+    {
+        titulo: "Cuaderno escolar Anime Medieval",
+        imagen: "https://artworldartistico.github.io/tienda-arttricolor/img/cuaderno-fantasia-medieval/portada-cuaderno-fantasia-anime-medieval.png",
+        precio: "$100.000",
+        precioNew: "$40.000",// ← sin precioNew = precio normal
+        link: "https://artworldartistico.github.io/tienda-arttricolor/producto.html?id=diseno-cuaderno-escolar-anime-medieval"
+    }
 ];
 
 const slider = document.getElementById("slider");
@@ -275,10 +315,28 @@ const slider = document.getElementById("slider");
     card.className = "product-card";
     card.onclick = () => window.open(p.link, '_blank');
 
+    let priceHTML = "";
+
+    if (p.precioNew) {
+        priceHTML = `
+            <div class="price-box">
+                <span class="price-old">${p.precio}</span>
+                <span class="price-new">${p.precioNew}</span>
+            </div>
+        `;
+    } else {
+        priceHTML = `
+            <div class="price-box">
+                <span class="price-normal">${p.precio}</span>
+            </div>
+        `;
+    }
+
     card.innerHTML = `
-        <img src="${p.imagen}" alt="${p.titulo}" />
+        <img src="${p.imagen}" alt="${p.titulo}">
         <h4>${p.titulo}</h4>
-        <p>${p.precio}</p>`;
+        ${priceHTML}
+    `;
 
     slider.appendChild(card);
 });

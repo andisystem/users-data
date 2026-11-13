@@ -104,6 +104,7 @@
     }
 
     /* Slider */
+    /* Slider continuo */
     .slider-container {
         width: 100%;
         margin-top: 45px;
@@ -113,19 +114,35 @@
 
     .slider-track {
         display: flex;
-        gap: 18px;
-        max-width: 900px;
         width: max-content;
+        max-width: none;
+        gap: 0;
         animation: slide 22s linear infinite;
+        will-change: transform;
+    }
+
+    .slider-group {
+        display: flex;
+        flex-shrink: 0;
+        gap: 18px;
+        width: max-content;
     }
 
     @keyframes slide {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
     }
 
     .product-card {
-        min-width: 150px;
+        min-width: 200px;
+        max-width: 200px;
+        flex: 0 0 150px;
+        box-sizing: border-box;
+        overflow: hidden;
         background: rgba(255,255,255,0.15);
         padding: 12px;
         border-radius: 14px;
@@ -140,6 +157,14 @@
         height: 140px;        /* altura uniforme */
         object-fit: cover;    /* recorta sin deformar */
         border-radius: 12px;
+    }
+
+    .product-card h4 {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        overflow-wrap: break-word;
+        word-break: break-word;
     }
 
     /* Botón copiar enlace superior */
@@ -269,29 +294,99 @@
     </a>
 
     <!-- SLIDER -->
-    <h2 class="stock-title">🎒 Temporada Escolar 2026 📚</h2>
+    <h2 class="stock-title">🎄 Colección Artesanal Navideña 🎁</h2>
     <p class="stock-desc">
-        Diseños profesionales de cuadernos escolares listos para descargar, imprimir y crear tu propia línea para la temporada escolar 2026 ✨
+        En esta Navidad, llévate uno de mis pesebres artesanales para llenar tu hogar de luz, tradición y arte ✨
     </p>
 
     <div class="slider-container">
         <div class="slider-track" id="slider"></div>
     </div>
 
-    <!--<a target="_blank" href="https://artworldartistico.wixsite.com/arttricolor/pesebres-artesanales" class="btn link-btn">
+    <a target="_blank" href="https://artworldartistico.wixsite.com/arttricolor/pesebres-artesanales" class="btn link-btn">
         <div class="left">
             <i class="fa-solid fa-palette"></i> Pesebres artesanales hechos con amor para tu hogar
         </div>
         <i class="fa-solid fa-copy copy-icon"></i>
-    </a>-->
+    </a>
 </div>
 
 <!-- BOTÓN ASISTENTE -->
-<!-- <div class="assistant-btn" onclick="openAssistant()"><i class="fa-solid fa-robot"></i></div> -->
+<!--<div class="assistant-btn" onclick="openAssistant()"><i class="fa-solid fa-robot"></i></div>-->
 
 <script>
 // PRODUCTOS (sin duplicados)
 const productos = [
+    {
+        titulo: "Pesebre artesanal colonial",
+        imagen: "https://artworldartistico.github.io/tienda-arttricolor/img/pesebres/pesebre-artesanal-colonial.jpeg",
+        precio: "$85.000",
+        precioNew: "$60.000", // ← si hay promo
+        link: "https://artworldartistico.github.io/tienda-arttricolor/producto.html?id=pesebre-artesanal-colonial"
+    },
+    {
+        titulo: "Pesebre artesanal árabe",
+        imagen: "https://artworldartistico.github.io/tienda-arttricolor/img/pesebres/pesebre-artesanal-arabe.jpeg",
+        precio: "$85.000",
+        precioNew: "$60.000", // ← si hay promo
+        link: "https://artworldartistico.github.io/tienda-arttricolor/producto.html?id=pesebre-artesanal-rabe"
+    },
+    {
+        titulo: "Pesebre en Porcelanicrón",
+        imagen: "https://artworldartistico.github.io/tienda-arttricolor/img/pesebres/pesebre-en-porcelanicron.jpg",
+        precio: "$35.000",
+        precioNew: "$30.000", // ← si hay promo
+        link: "https://artworldartistico.github.io/tienda-arttricolor/producto.html?id=pesebre-en-porcelanicr-n"
+    },
+    {
+        titulo: "Casa para Pesebre – Estilo Colonial Madera 🎄🏡",
+        imagen: "https://artworldartistico.github.io/tienda-arttricolor/img/pesebres/casa-pesebre-madera.jpeg",
+        precio: "$5.000",
+        precioNew: "$3.000", // ← si hay promo
+        link: "https://artworldartistico.github.io/tienda-arttricolor/producto.html?id=casa-para-pesebre-estilo-colonial-madera"
+    },
+    {
+        titulo: "Casa para Pesebre - Estilo Ladrillo",
+        imagen: "https://artworldartistico.github.io/tienda-arttricolor/img/pesebres/casa-pesebre-ladrillo.jpeg",
+        precio: "$5.000",
+        precioNew: "$3.000", // ← si hay promo
+        link: "https://artworldartistico.github.io/tienda-arttricolor/producto.html?id=casa-para-pesebre-estilo-ladrillo"
+    },
+    {
+        titulo: "Casa para Pesebre – Estilo Árabe 🕌✨",
+        imagen: "https://artworldartistico.github.io/tienda-arttricolor/img/pesebres/casa-pesebre-arabe.jpeg",
+        precio: "$5.000",
+        precioNew: "$3.000", // ← si hay promo
+        link: "https://artworldartistico.github.io/tienda-arttricolor/producto.html?id=casa-para-pesebre-estilo-arabe"
+    },
+    {
+        titulo: "Iglesia para Pesebre – Artesanal ⛪🎄",
+        imagen: "https://artworldartistico.github.io/tienda-arttricolor/img/pesebres/iglesia-pesebre.jpeg",
+        precio: "$10.000",
+        precioNew: "$8.000", // ← si hay promo
+        link: "https://artworldartistico.github.io/tienda-arttricolor/producto.html?id=iglesia-para-pesebre-artesanal"
+    },
+    {
+        titulo: "Castillo para Pesebre – Estilo Árabe 🕌🏰",
+        imagen: "https://artworldartistico.github.io/tienda-arttricolor/img/pesebres/castillo-arabe.jpeg",
+        precio: "$10.000",
+        precioNew: "$8.000", // ← si hay promo
+        link: "https://artworldartistico.github.io/tienda-arttricolor/producto.html?id=castillo-para-pesebre-estilo-arabe"
+    },
+    {
+        titulo: "Portal para Pesebre – Estilo Árabe 🕌✨",
+        imagen: "https://artworldartistico.github.io/tienda-arttricolor/img/pesebres/portal-arabe.jpeg",
+        precio: "$10.000",
+        precioNew: "$3.000", // ← si hay promo
+        link: "https://artworldartistico.github.io/tienda-arttricolor/producto.html?id=portal-para-pesebre-estilo-arabe"
+    },
+    {
+        titulo: "Casa para Pesebre con luz - Estilo Ladrillo",
+        imagen: "https://artworldartistico.github.io/tienda-arttricolor/img/pesebres/casa-pesebre-ladrillo-con-luz.jpeg",
+        precio: "$8.000",
+        precioNew: "$5.000", // ← si hay promo
+        link: "https://artworldartistico.github.io/tienda-arttricolor/producto.html?id=casa-para-pesebre-con-luz-estilo-ladrillo"
+    },
     {
         titulo: "Cuaderno escolar Naturaleza Abstracta",
         imagen: "https://artworldartistico.github.io/tienda-arttricolor/img/cuaderno-naturaleza-abstracta/portada-cuaderno-naturaleza-abstracta.png",
@@ -310,13 +405,23 @@ const productos = [
 
 const slider = document.getElementById("slider");
 
-[...productos, ...productos].forEach(p => {
+// Crear dos grupos idénticos para conseguir continuidad
+const grupo1 = document.createElement("div");
+grupo1.className = "slider-group";
+
+const grupo2 = document.createElement("div");
+grupo2.className = "slider-group";
+
+// Función para construir cada tarjeta
+function crearProducto(p) {
     const card = document.createElement("div");
     card.className = "product-card";
-    card.onclick = () => window.open(p.link, '_blank');
+
+    card.onclick = () => window.open(p.link, "_blank");
 
     let priceHTML = "";
 
+    // Si tiene promoción
     if (p.precioNew) {
         priceHTML = `
             <div class="price-box">
@@ -324,7 +429,9 @@ const slider = document.getElementById("slider");
                 <span class="price-new">${p.precioNew}</span>
             </div>
         `;
-    } else {
+    } 
+    // Si tiene precio normal
+    else {
         priceHTML = `
             <div class="price-box">
                 <span class="price-normal">${p.precio}</span>
@@ -338,8 +445,28 @@ const slider = document.getElementById("slider");
         ${priceHTML}
     `;
 
-    slider.appendChild(card);
+    return card;
+}
+
+// Agregar todos los productos al primer grupo
+productos.forEach(p => {
+    grupo1.appendChild(crearProducto(p));
 });
+
+// Duplicar todos los productos en el segundo grupo
+productos.forEach(p => {
+    grupo2.appendChild(crearProducto(p));
+});
+
+// Incorporar ambos grupos al slider
+slider.appendChild(grupo1);
+slider.appendChild(grupo2);
+
+// Ajustar velocidad según cantidad de productos
+const anchoGrupo = grupo1.scrollWidth;
+const duracion = Math.max(22, anchoGrupo / 45);
+
+slider.style.animationDuration = `${duracion}s`;
 
 // COPIAR ENLACE DE ESTA PÁGINA
 function copyPageURL() {
